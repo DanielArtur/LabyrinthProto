@@ -7,7 +7,7 @@ public class Triangulation : MonoBehaviour
     public static List<HalfEdge> TransformFromTriangleToHalfEdge(List<Triangle> triangles)
     {
         //Make sure the triangles have the same orientation
-        MeshOperations.OrientTrianglesClockwise(triangles);
+       // MeshOperations.OrientTrianglesClockwise(triangles);
 
         //First create a list with all possible half-edges
         List<HalfEdge> halfEdges = new List<HalfEdge>(triangles.Count * 3);
