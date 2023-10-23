@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -43,31 +41,36 @@ public class InstantiateRandomRooms : MonoBehaviour
     //    }
     //}
 
-    Vector3[] generatedRoomPositions;
+    /// <summary>
+    /// 1st step: Generate rooms with random positions
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator GenerateRooms()
     {
-        generatedRoomPositions = new Vector3[RoomCount - 1];
 
-        int t = 0;
-        while (t < RoomCount - 1)
+        List<Vector3> generatedRoomPositions = new List<Vector3>();
+
+
+        for (int i = 0; i < generatedRoomPositions.Count; i++)
         {
+            // Generate random position for a new room:
             Vector3 randomPos = new Vector3(Random.Range(-maxMinX, maxMinX), Random.Range(-maxMinY, maxMinY), Random.Range(-maxMinZ, maxMinZ));
 
-            generatedRoomPositions[t] = Instantiate(RoomPrefabs[0], randomPos, Quaternion.identity).transform.position;
+            // Create room
+            GameObject newRoom = Instantiate(RoomPrefabs[0], randomPos, Quaternion.identity);
+
+            // Store the position of this room:
+            generatedRoomPositions.Add(newRoom.transform.position);
+
             Debug.Log("Cycle");
 
-            t++;
+
 
             yield return null;
         }
 
 
-        DelaunayTriangulation();
-    }
-
-    private void DelaunayTriangulation()
-    {
-        throw new NotImplementedException();
+        DelaunayTriangulation.TriangulateByFlippingEdges(generatedRoomPositions);
     }
 
 
