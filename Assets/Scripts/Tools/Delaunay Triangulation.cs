@@ -18,8 +18,9 @@ public class DelaunayTriangulation : MonoBehaviour
 
         //Triangulate the convex hull of the sites
         List<Triangle> triangles = IncrementalTriangulation.TriangulatePoints(vertices);
-        //List triangles = TriangulatePoints.TriangleSplitting(vertices);
+        LineGenerator.CreateLinesForTriangles(triangles, GameObject.Find("LineForTriangles"));
 
+        return null;
         //Step 2. Change the structure from triangle to half-edge to make it faster to flip edges
         List<HalfEdge> halfEdges = TransformFromTriangleToHalfEdge(triangles);
 
