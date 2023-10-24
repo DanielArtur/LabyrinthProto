@@ -7,7 +7,7 @@ public class InstantiateRandomRooms : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject[] RoomPrefabs;
-    [SerializeField] GameObject LineRendererPrefab;
+
 
 
     [Header("Settings")]
@@ -75,7 +75,7 @@ public class InstantiateRandomRooms : MonoBehaviour
 
         // Step 2: Create triangles from the location of the rooms usin Incremental triangulation with Dalaunay algorithm to get even triangles: 
         List<Triangle> newTriangles = DelaunayTriangulation.TriangulateByFlippingEdges(generatedRoomPositions);
-        
+
         // Step 3.5: Create LineRenderers to mark those triangles in 3d-world. This is done for debugging. 
         //LineGenerator.CreateLinesForTriangles(newTriangles, LineRendererPrefab);
     }
