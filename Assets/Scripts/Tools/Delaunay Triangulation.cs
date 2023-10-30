@@ -18,9 +18,7 @@ public class DelaunayTriangulation : MonoBehaviour
 
         //Triangulate the convex hull of the sites
         List<Triangle> triangles = IncrementalTriangulation.TriangulatePoints(vertices);
-        LineGenerator.CreateLinesForTriangles(triangles);
 
-        return null;
         //Step 2. Change the structure from triangle to half-edge to make it faster to flip edges
         List<HalfEdge> halfEdges = TransformFromTriangleToHalfEdge(triangles);
 
@@ -91,13 +89,13 @@ public class DelaunayTriangulation : MonoBehaviour
             //We have searched through all edges and havent found an edge to flip, so we have a Delaunay triangulation!
             if (!hasFlippedEdge)
             {
-                //Debug.Log("Found a delaunay triangulation");
+                Debug.Log("Found a delaunay triangulation");
 
                 break;
             }
         }
 
-        //Debug.Log("Flipped edges: " + flippedEdges);
+        Debug.Log("Flipped edges: " + flippedEdges);
 
         //Dont have to convert from half edge to triangle because the algorithm will modify the objects, which belongs to the 
         //original triangles, so the triangles have the data we need

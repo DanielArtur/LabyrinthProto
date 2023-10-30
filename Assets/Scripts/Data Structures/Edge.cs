@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Edge : MonoBehaviour
+public class Edge
 {
     public Vertex v1;
     public Vertex v2;

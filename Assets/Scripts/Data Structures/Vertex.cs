@@ -1,7 +1,6 @@
 using UnityEngine;
-using static TriangleIntersectionTester;
 
-public class Vertex : MonoBehaviour
+public class Vertex
 {
     public Vector3 position;
 

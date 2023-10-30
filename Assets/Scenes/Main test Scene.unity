@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,10 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPrefabs:
-  - {fileID: 5368047214388322739, guid: a0f9ee3e37e44dd44afdb86269462b94, type: 3}
+  - {fileID: 7795938027686504301, guid: 7305afe7481a8df43a6b680dfd5114c2, type: 3}
   - {fileID: 6381045088223918502, guid: 7b9671d3e31a9d345ae87ec214cb21d2, type: 3}
-  LineRendererPrefab: {fileID: 2080161342021944393, guid: 65c678183821bbd45b133fbc85538350,
-    type: 3}
   RoomCount: 20
   maxMinZ: 10
   maxMinY: 0
@@ -284,6 +282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LineForTriangles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080161342021944393, guid: 65c678183821bbd45b133fbc85538350,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2080161342021944395, guid: 65c678183821bbd45b133fbc85538350,
         type: 3}

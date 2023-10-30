@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Triangle : MonoBehaviour
+public class Triangle
 {
 
     //Corners

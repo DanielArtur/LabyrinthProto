@@ -77,7 +77,7 @@ public class InstantiateRandomRooms : MonoBehaviour
         List<Triangle> newTriangles = DelaunayTriangulation.TriangulateByFlippingEdges(generatedRoomPositions);
 
         // Step 3.5: Create LineRenderers to mark those triangles in 3d-world. This is done for debugging. 
-        //LineGenerator.CreateLinesForTriangles(newTriangles, LineRendererPrefab);
+        LineGenerator.CreateLinesForTriangles(newTriangles);
     }
 
 
