@@ -1,7 +1,4 @@
-using UnityEngine;
-using static TriangleIntersectionTester;
-
-public class HalfEdge : MonoBehaviour
+public class HalfEdge
 {
     //The vertex the edge points to
     public Vertex v;

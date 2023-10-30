@@ -8,6 +8,8 @@ public class InstantiateRandomRooms : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject[] RoomPrefabs;
 
+
+
     [Header("Settings")]
     [SerializeField] int RoomCount = 10;
 
@@ -19,6 +21,8 @@ public class InstantiateRandomRooms : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         StartCoroutine(GenerateRooms());
     }
 
@@ -51,7 +55,7 @@ public class InstantiateRandomRooms : MonoBehaviour
         List<Vector3> generatedRoomPositions = new List<Vector3>();
 
 
-        for (int i = 0; i < generatedRoomPositions.Count; i++)
+        for (int i = 0; i < RoomCount; i++)
         {
             // Generate random position for a new room:
             Vector3 randomPos = new Vector3(Random.Range(-maxMinX, maxMinX), Random.Range(-maxMinY, maxMinY), Random.Range(-maxMinZ, maxMinZ));
@@ -69,8 +73,11 @@ public class InstantiateRandomRooms : MonoBehaviour
             yield return null;
         }
 
+        // Step 2: Create triangles from the location of the rooms usin Incremental triangulation with Dalaunay algorithm to get even triangles: 
+        List<Triangle> newTriangles = DelaunayTriangulation.TriangulateByFlippingEdges(generatedRoomPositions);
 
-        DelaunayTriangulation.TriangulateByFlippingEdges(generatedRoomPositions);
+        // Step 3.5: Create LineRenderers to mark those triangles in 3d-world. This is done for debugging. 
+        LineGenerator.CreateLinesForTriangles(newTriangles);
     }
 
 
