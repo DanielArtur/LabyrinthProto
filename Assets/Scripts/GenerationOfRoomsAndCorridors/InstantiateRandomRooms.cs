@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,7 +5,7 @@ using Random = UnityEngine.Random;
 public class InstantiateRandomRooms : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] GameObject[] RoomPrefabs;
+    [SerializeField] Room[] Rooms;
 
 
 
@@ -23,7 +22,7 @@ public class InstantiateRandomRooms : MonoBehaviour
     {
 
 
-        StartCoroutine(GenerateRooms());
+        GenerateRooms();
     }
 
 
@@ -49,28 +48,62 @@ public class InstantiateRandomRooms : MonoBehaviour
     /// 1st step: Generate rooms with random positions
     /// </summary>
     /// <returns></returns>
-    private IEnumerator GenerateRooms()
+    private void GenerateRooms()
     {
-
+        int warning = 0;
         List<Vector3> generatedRoomPositions = new List<Vector3>();
 
-
-        for (int i = 0; i < RoomCount; i++)
+        for (int i = 0; i < RoomCount;)
         {
-            // Generate random position for a new room:
-            Vector3 randomPos = new Vector3(Random.Range(-maxMinX, maxMinX), Random.Range(-maxMinY, maxMinY), Random.Range(-maxMinZ, maxMinZ));
+            // step 1.1: Generate random position for a new room:
+            Vector3 _randomPos = new Vector3(Random.Range(-maxMinX, maxMinX), Random.Range(-maxMinY, maxMinY), Random.Range(-maxMinZ, maxMinZ));
 
-            // Create room
-            GameObject newRoom = Instantiate(RoomPrefabs[0], randomPos, Quaternion.identity);
+            // step 1.2: Check the distance to other rooms:
+            Vector3 _size = Rooms[0].roomSize;
+
+            bool _isTooClose = false;
+
+
+            for (int t = 0; t < generatedRoomPositions.Count; t++)
+            {
+                float xDifference = generatedRoomPositions[t].x - _randomPos.x;
+                float zDifference = generatedRoomPositions[t].z - _randomPos.z;
+
+
+                if (_size.x > xDifference || _size.z > zDifference)
+                {
+                    _isTooClose = true;
+                    Debug.Log("New room is too close");
+
+                    break;
+
+                }
+
+
+
+            }
+            warning++;
+
+            if (warning > 2000)
+            {
+                Debug.LogWarning("Too much");
+                break;
+
+            }
+
+            if (_isTooClose)
+                continue;
+
+            i++;
+
+            // step 1.3: Create room
+            GameObject newRoom = Instantiate(Rooms[0].Prefab, _randomPos, Quaternion.identity);
 
             // Store the position of this room:
             generatedRoomPositions.Add(newRoom.transform.position);
 
             Debug.Log("Cycle");
 
-
-
-            yield return null;
         }
 
         // Step 2: Create triangles from the location of the rooms usin Incremental triangulation with Dalaunay algorithm to get even triangles: 

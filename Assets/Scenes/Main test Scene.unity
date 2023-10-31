@@ -153,13 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dceb8a1bfdae9549ad0e004dcac730d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomPrefabs:
-  - {fileID: 7795938027686504301, guid: 7305afe7481a8df43a6b680dfd5114c2, type: 3}
-  - {fileID: 6381045088223918502, guid: 7b9671d3e31a9d345ae87ec214cb21d2, type: 3}
+  Rooms:
+  - {fileID: 11400000, guid: 5dd8097e5e26b4446b2c1e73d41f73aa, type: 2}
   RoomCount: 20
-  maxMinZ: 10
+  maxMinZ: 80
   maxMinY: 0
-  maxMinX: 10
+  maxMinX: 80
 --- !u!4 &74984495
 Transform:
   m_ObjectHideFlags: 0
@@ -198,6 +197,7 @@ GameObject:
   - component: {fileID: 332858004}
   - component: {fileID: 332858003}
   - component: {fileID: 332858002}
+  - component: {fileID: 332858005}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -271,6 +271,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332858005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332858001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &1042633379
 PrefabInstance:
   m_ObjectHideFlags: 0
